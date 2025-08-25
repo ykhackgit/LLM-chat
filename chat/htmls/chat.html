@@ -46,7 +46,7 @@
         <option value="gpt-oss">Chat Gtp</option>
 
       </select>
-      <input type="text" id="tunnelUrl" placeholder="Tunnel URL" value="/api/send_message/"/>
+      <input type="text" id="tunnelUrl" placeholder="Tunnel URL" value="/" />
     </footer>
   </div>
 
@@ -127,6 +127,8 @@
       const formData = new FormData();
       formData.append("model", model);
       formData.append("message", text);
+      formData.append("api_url", tunnelUrl);
+
       if (fileInput.files.length>0) {
         formData.append("file", fileInput.files[0]);
         fileInput.value="";
@@ -137,7 +139,7 @@
       let tokens = 0;
       
 
-      const response = await fetch(tunnelUrl, { method:"POST", body:formData });
+      const response = await fetch('api/send_message/', { method:"POST", body:formData });
       const reader = response.body.getReader();
       const decoder = new TextDecoder();
 

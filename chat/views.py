@@ -6,10 +6,9 @@ from django.views.decorators.csrf import csrf_exempt
 from django.shortcuts import render
 from .models import ChatMessage
 
-OLLAMA_API = "https://companies-triangle-cove-performing.trycloudflare.com/"   # change if tunneling
-V2TPU_API=" https://toolbox-bracket-cuba-grows.trycloudflare.com/"
+  # change if tunneling
 
-a=True
+
 def chat_view(request):
     return render(request, "chat.html")
 
@@ -33,6 +32,7 @@ def send_message(request):
     if request.method == "POST":
        
             data = request.POST.dict()
+            OLLAMA_API = data.get("api_url", "http://localhost:11434") 
             model = data.get("model", "llama3")
             message = data.get("message", "")
 
@@ -87,7 +87,7 @@ def send_message(request):
                 start = time.time()
                 bot_reply = ""
 
-                with requests.post(f"{ OLLAMA_API if a ==True else V2TPU_API}/api/chat", json= payload_ollama , stream=True) as r:
+                with requests.post(f"{ OLLAMA_API}/api/chat", json= payload_ollama , stream=True) as r:
                     for line in r.iter_lines():
                         if line:
                             j = json.loads(line.decode("utf-8"))
