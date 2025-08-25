@@ -1,0 +1,55 @@
+# Python
+__pycache__/
+*.py[cod]
+*.so
+*.egg
+*.egg-info/
+*.pyo
+*.pyd
+*.pkl
+*.log
+
+# Virtualenv
+.env
+venv/
+ENV/
+env/
+.venv/
+
+# Django stuff
+db.sqlite3
+*.pot
+*.pyc
+*.mo
+*.log
+media/
+staticfiles/
+static_root/
+
+# VS Code / PyCharm
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Pip
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Coverage / testing
+.coverage
+htmlcov/
+.tox/
+nosetests.xml
+coverage.xml
+*,cover
+
+# Migrations (optional if you don’t want to commit generated migrations)
+# Uncomment if you want to ignore migrations
+# */migrations/*.py
+# */migrations/*.pyc
+
+# Cache
+.cache/
